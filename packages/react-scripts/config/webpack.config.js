@@ -711,3 +711,11 @@ module.exports = function(webpackEnv) {
     performance: false,
   };
 };
+
+const originalConfigFactory = module.exports;
+module.exports = function(webpackEnv) {
+  const originalConfig = originalConfigFactory(webpackEnv);
+  console.log('cwd:', process.cwd());
+  console.log('config:', originalConfig);
+  return originalConfig;
+};
